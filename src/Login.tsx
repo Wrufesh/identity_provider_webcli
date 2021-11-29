@@ -1,7 +1,7 @@
-import { Component, ReactElement } from 'react';
+import { Component } from 'react';
 
-import {ReactComponent as Eye} from '@/icons/eye.svg'
-import {ReactComponent as EyeOff} from '@/icons/eye-off.svg'
+import {ReactComponent as Eye} from 'icons/eye.svg'
+import {ReactComponent as EyeOff} from 'icons/eye-off.svg'
 
 type MyProps = {};
 type MyState = {
@@ -17,8 +17,9 @@ class Login extends Component<MyProps, MyState> {
         password: ''
     }
 
-    toggleShowPassword(): void{
-        this.state.showPassword = !this.state.showPassword
+    toggleShowPassword = (): void => {
+        this.setState(
+            {showPassword: !this.state.showPassword})
     }
 
     onChange = (e: React.FormEvent<HTMLInputElement>, inputName: string): void => {
@@ -27,41 +28,32 @@ class Login extends Component<MyProps, MyState> {
         this.setState(update as Pick<MyState, keyof MyState>);
     };
 
-    passwordInputType(): string {
-        if (this.state.showPassword){
-            return 'text'
-        } else {
-            return 'password'
-        }
-    }
-
-    getPasswordFieldIcon(): ReactElement{
-        if (this.state.showPassword){
-            return <EyeOff />
-        } else {
-            return <Eye />
-        }
-    }
-
     render() {
-        return <div className="w-2/4">
+        return <div className="">
             <div className="flex flex-col">
                 <label>Email</label>
-                <input 
-                    type="email" 
-                    value={this.state.email} 
-                    onChange={(e) => this.onChange(e, 'email')} 
-                />
+                <div className="flex h-8 focus:ring focus:border-blue-300">
+                    <input 
+                        className="w-full focus:outline-none"
+                        type="email" 
+                        value={this.state.email} 
+                        onChange={(e) => this.onChange(e, 'email')} 
+                    />    
+                </div>
+                
             </div>
             <div className="flex flex-col">
                 <label>Password</label>
-                <div className="flex">
+                <div className="flex h-8">
                     <input 
-                        type={this.passwordInputType()} 
+                        className="w-full focus:outline-none"
+                        type={this.state.showPassword ? 'text' : 'password'} 
                         value={this.state.password} 
                         onChange={(e) => this.onChange(e, 'password')} 
                     />
-                    {this.getPasswordFieldIcon()}
+                    {this.state.showPassword ? 
+                      <Eye className="w-8 h-8" onClick={this.toggleShowPassword}/> : 
+                      <EyeOff className="w-8 h-8" onClick={this.toggleShowPassword}/>}
                 </div>
             </div>
         </div>
