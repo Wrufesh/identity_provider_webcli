@@ -5,6 +5,7 @@ type MyProp = {
     value: string;
     onChange?: Function;
     controlSlot?: ReactElement;
+    placeholder?: string;
 };
 type MyState = {
     value: string;
@@ -23,11 +24,12 @@ class InputField extends Component<MyProp, MyState>{
         this.props.onChange && this.props.onChange(this.state.value)
     };
     render(){
-        return <div className="flex h-8 focus:ring focus:border-blue-300">
+        return <div className="group px-1.5 h-14 flex items-center ring-1 ring-black bg-white focus-within:ring-2 focus-within:ring-blue-500">
             <input
                 type={this.props.type}
-                className="w-full focus:outline-none" 
-                onChange={this.onChange} 
+                className="p-2 w-full h-full focus:outline-none text-lg placeholder-gray-500 bg-white" 
+                onChange={this.onChange}
+                placeholder={this.props.placeholder? this.props.placeholder : ''} 
             />
             {this.props.controlSlot && this.props.controlSlot}
         </div>
