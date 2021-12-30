@@ -2,6 +2,7 @@ import { Component } from 'react';
 
 import { ReactComponent as Eye } from 'icons/eye.svg'
 import { ReactComponent as EyeOff } from 'icons/eye-off.svg'
+import { ReactComponent as BabblerLogo } from 'icons/babbler-exp-logo.svg'
 
 import InputField from 'components/InputField';
 import Button from 'components/Button';
@@ -26,41 +27,57 @@ class Login extends Component<MyProps, MyState> {
     }
 
     render() {
-        return <div className="w-full h-screen flex justify-center items-center bg-gray-100">
-            <div className="p-6 w-2/3 max-w-md">
-                <div className="flex flex-col py-2">
-                    {/* <p className="pb-3 text-3xl font-semibold">Sign in</p> */}
-                    <InputField
-                        type="text"
-                        value={this.state.email}
-                        onChange={(value: string) => this.setState({ email: value })}
-                        placeholder="Enter your email here."
-                    />
+        return <div className=" bg-gradient-to-br from-gray-200 via-gray-50 to-gray-200">
+            <div className="container mx-auto w-full h-screen flex justify-center items-center">
+                <div className="w-1/2">
 
+                    <div className="flex justify-center items-center  filter drop-shadow-xl">
+                        <BabblerLogo className="w-28 h-28 fill-current" />
+                        <div className="flex-col">
+                            <p className="pl-3 h-14 text-6xl font-medium">Babbler</p>
+                            <p className="pl-3 h-14 text-6xl font-medium">exp</p>
+                        </div>
+                    </div>
                 </div>
-                <div className="flex flex-col py-2">
-                    <InputField
-                        type={this.state.showPassword ? 'text' : 'password'}
-                        value={this.state.password}
-                        onChange={(value: string) => this.setState({ password: value })}
-                        placeholder="Enter your password here."
-                        controlSlot={this.state.showPassword ?
-                            <Eye
-                                className="m-2 w-8 h-8 text-gray-700 fill-current"
-                                onClick={this.toggleShowPassword} /> :
-                            <EyeOff
-                                className="m-2 w-8 h-8 text-gray-700 fill-current"
-                                onClick={this.toggleShowPassword} />}
-                    />
+
+                <div className="w-1/2 flex justify-center items-center">
+                    <div className="p-6 w-full max-w-md">
+                        <div className="flex flex-col py-2">
+                            {/* <p className="pb-3 text-3xl font-semibold">Sign in</p> */}
+                            <InputField
+                                type="text"
+                                value={this.state.email}
+                                onChange={(value: string) => this.setState({ email: value })}
+                                placeholder="Enter your email here."
+                                autofocus={true}
+                            />
+
+                        </div>
+                        <div className="flex flex-col py-2">
+                            <InputField
+                                type={this.state.showPassword ? 'text' : 'password'}
+                                value={this.state.password}
+                                onChange={(value: string) => this.setState({ password: value })}
+                                placeholder="Enter your password here."
+                                controlSlot={this.state.showPassword ?
+                                    <Eye
+                                        className="m-2 w-8 h-8 text-gray-700 fill-current"
+                                        onClick={this.toggleShowPassword} /> :
+                                    <EyeOff
+                                        className="m-2 w-8 h-8 text-gray-700 fill-current"
+                                        onClick={this.toggleShowPassword} />}
+                            />
+                        </div>
+                        <Button className="mt-5 mb-1 h-12 transition duration-500 transform hover:-translate-y-1 hover:scale-101" label="Login" colorClass="black" />
+                        <div className="flex justify-center items-center m-3">
+                            <div className="h-px w-full bg-gray-700"></div>
+                            <p className="px-2 w-full text-gray-800 flex-grow-1 whitespace-nowrap" >or sign in with</p>
+                            <div className="h-px w-full bg-gray-700"></div>
+                        </div>
+                        <Button className="my-1.5 h-12 transition duration-500 transform hover:-translate-y-1 hover:scale-101" label="Facebook" colorClass="black" outline={true} />
+                        <Button className="my-2 h-12 transition duration-500 transform hover:-translate-y-1 hover:scale-101" label="Google" colorClass="black" outline={true} />
+                    </div>
                 </div>
-                <Button className="mt-5 mb-1 h-12 transition duration-500 transform hover:-translate-y-1 hover:scale-101" label="Login" colorClass="black" />
-                <div className="flex justify-center items-center m-3">
-                    <div className="h-px w-full bg-gray-700"></div>
-                    <p className="px-2 w-full text-gray-800 flex-grow-1 whitespace-nowrap" >or sign in with</p>
-                    <div className="h-px w-full bg-gray-700"></div>
-                </div>
-                <Button className="my-1.5 h-12 transition duration-500 transform hover:-translate-y-1 hover:scale-101" label="Facebook" colorClass="black" outline={true} />
-                <Button className="my-2 h-12 transition duration-500 transform hover:-translate-y-1 hover:scale-101" label="Google" colorClass="black" outline={true} />
             </div>
         </div>
     }

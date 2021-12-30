@@ -6,6 +6,7 @@ type MyProp = {
     onChange?: Function;
     controlSlot?: ReactElement;
     placeholder?: string;
+    autofocus?: Boolean
 };
 type MyState = {
     value: string;
@@ -29,7 +30,8 @@ class InputField extends Component<MyProp, MyState>{
                 type={this.props.type}
                 className="p-2 w-full h-full focus:outline-none text-lg placeholder-gray-500 bg-white" 
                 onChange={this.onChange}
-                placeholder={this.props.placeholder? this.props.placeholder : ''} 
+                placeholder={this.props.placeholder? this.props.placeholder : ''}
+                autoFocus={!!this.props.autofocus} 
             />
             {this.props.controlSlot && this.props.controlSlot}
         </div>

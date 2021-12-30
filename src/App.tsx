@@ -7,6 +7,8 @@ import {
 } from "react-router-dom";
 
 import Login from './Login'
+import AppShell from "./components/layouts/AppShell"
+import HomePage from "./pages/Home"
 
 export default function App() {
   return (
@@ -15,6 +17,9 @@ export default function App() {
         <Switch>
           <Route path="/login">
             <Login />
+          </Route>
+          <Route path="/">
+            <AppShell defaultSlot={<HomePage />}></AppShell>
           </Route>
         </Switch>
       </div>
