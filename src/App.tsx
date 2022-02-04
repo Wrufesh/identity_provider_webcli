@@ -6,9 +6,10 @@ import {
   Link
 } from "react-router-dom";
 
-import Login from './Login'
 import AppShell from "./components/layouts/AppShell"
+import AuthLayout from "./components/layouts/Auth"
 import HomePage from "./pages/Home"
+import LoginPage from "./pages/Login"
 
 export default function App() {
   return (
@@ -16,7 +17,7 @@ export default function App() {
       <div>
         <Switch>
           <Route path="/login">
-            <Login />
+            <AuthLayout defaultSlot={<LoginPage />}></AuthLayout>
           </Route>
           <Route path="/">
             <AppShell defaultSlot={<HomePage />}></AppShell>

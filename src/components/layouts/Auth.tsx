@@ -1,14 +1,9 @@
 import { Component, ReactElement } from 'react';
 
-import { ReactComponent as Eye } from 'icons/eye.svg'
-import { ReactComponent as EyeOff } from 'icons/eye-off.svg'
 import { ReactComponent as BabblerLogo } from 'icons/babbler-exp-logo.svg'
 
-import InputField from 'components/InputField';
-import Button from 'components/Button';
-
 type MyProps = {
-    defautSlot: ReactElement
+    defaultSlot: ReactElement
 };
 type MyState = {
     showPassword: Boolean;
@@ -16,7 +11,7 @@ type MyState = {
     password: string;
 };
 
-class Login extends Component<MyProps, MyState> {
+class AuthLayout extends Component<MyProps, MyState> {
     state: MyState = {
         showPassword: false,
         email: '',
@@ -42,10 +37,10 @@ class Login extends Component<MyProps, MyState> {
                     </div>
                 </div>
 
-                {this.props.defautSlot}
+                {this.props.defaultSlot}
             </div>
         </div>
     }
 }
 
-export default Login;
+export default AuthLayout;
